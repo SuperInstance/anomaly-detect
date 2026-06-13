@@ -77,6 +77,10 @@ Anomaly detection provides the **statistical monitoring layer** for γ + η = C 
 
 See [ARCHITECTURE.md](https://github.com/SuperInstance/SuperInstance/blob/main/ARCHITECTURE.md).
 
+**Practical threshold selection:** The choice of threshold depends on the application domain. For system monitoring (CPU, memory, latency), a Z-score threshold of 3.0 corresponds to the 99.7% confidence interval — only 0.3% of normal data triggers alerts. For fraud detection, thresholds are typically lower (2.0–2.5) because the cost of missing fraud exceeds the cost of false alarms. For sensor validation in safety-critical systems, the MAD-based method with threshold 3.5 is recommended because sensor data often has heavy tails that violate normality.
+
+**Ensemble approach:** For maximum robustness, all three methods can be applied and an anomaly flagged only when ≥2 methods agree. This reduces false positives by requiring cross-method consensus while maintaining sensitivity — any method can veto, preventing single-method weaknesses from causing missed detections.
+
 ## References
 
 1. Tukey, J.W. (1977). *Exploratory Data Analysis*. Addison-Wesley. (IQR method.)
